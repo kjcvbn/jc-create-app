@@ -1,0 +1,19 @@
+{
+  "name": "jc-create-app",
+  "version": "1.0.1",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "jc-create-app": "./lib/app.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "commander": "^6.0.0",
+    "fs-extra": "^9.0.1",
+    "inquirer": "^7.3.2"
+  }
+}
