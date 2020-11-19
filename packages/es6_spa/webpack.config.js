@@ -6,45 +6,24 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const env = process.env.NODE_ENV || 'development';
 const isDevelopment = env === 'development';
 const isProduction = env === 'production';
+
+console.log(env)
 module.exports = {
   mode: env,
   entry: './src/script/app.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: 'bundle.[hash].js',
   },
   module: {
     rules: [
       {
         test: /\.js$/,
-        include: [path.resolve(__dirname, 'src/script')],
+        include: [path.resolve(__dirname, 'src')],
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
-            plugins: [],
-          },
         },
-      },
-      {
-        test: /\.module\.s(a|c)ss$/,
-        loader: [
-          isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              sourceMap: isDevelopment
-            }
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: isDevelopment
-            }
-          }
-        ]
       },
       {
         test: /\.s(a|c)ss$/,
@@ -76,7 +55,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: './src/index.html',
-      filename: path.join(__dirname, 'dist/index.html'),
+      filename: path.join(__dirname, 'dist/index.html')
     }),
     new MiniCssExtractPlugin({
       filename: isDevelopment ? '[name].css' : '[name].[hash].css',
