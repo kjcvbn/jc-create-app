@@ -63,6 +63,10 @@ module.exports = {
     })
   ],
   resolve: {
-    extensions: ['.js', '.jsx', '.scss']
-  }
+    extensions: ['.js', '.jsx', '.scss'],
+    alias: {
+      '~': __dirname,
+      "@": path.resolve(__dirname,'src/')
+    }
+  },
 };
